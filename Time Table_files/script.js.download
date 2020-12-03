@@ -1,0 +1,265 @@
+//listview page start
+function callAjax(value, id, url)
+{
+	var id=id+"_a";	
+	
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById(id).innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("POST",url+"?id="+value,true);
+xmlhttp.send(null);
+
+}
+
+function AjaxValue(value, id, url)
+{	
+	
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById(id).innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("POST",url,true);
+xmlhttp.send(null);
+
+}
+
+
+function deleteTimetableAjax(value, id, url)
+{
+		
+	var id=id+"_a";	
+	
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById(id).innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("POST",url+"&id="+value,true);
+xmlhttp.send(null);
+document.getElementById('editTimetable').style.display= 'none'; 
+}
+
+function editTimetablePopup(id)
+{	
+
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+		
+    document.getElementById("editTimetable").innerHTML=xmlhttp.responseText;	
+    }
+  }
+ xmlhttp.open("POST","edit_timetable_popup.php?id="+id,true);
+xmlhttp.send(null);
+
+}
+
+function editTimetablePopupDep(id)
+{	
+
+var post_value="id="+id;
+
+
+if(document.getElementById("classid").value!='')
+{
+	var post_value =post_value+"&classid="+document.getElementById("classid").value;	
+}
+if(document.getElementById("semester").value!='')
+{
+	var post_value =post_value+"&sem="+document.getElementById("semester").value;	
+}
+if(document.getElementById("class_section").value!='')
+{
+	var post_value =post_value+"&class_section="+document.getElementById("class_section").value;	
+}
+
+/*if(document.getElementById("teacher").value!='')
+{
+	var	post_value =post_value+"&teacher="+document.getElementById("teacher").value;	
+}
+if(document.getElementById("roomno").value!='')
+{
+	var post_value =post_value+"&roomno="+document.getElementById("roomno").value;	
+}
+if(document.getElementById("day").value!='')
+{	
+	var post_value =post_value+"&day="+document.getElementById("day").value;	
+}
+if(document.getElementById("period").value!='')
+{
+	var post_value =post_value+"&period="+document.getElementById("period").value;	
+}*/
+
+
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+		
+    document.getElementById("editTimetable").innerHTML=xmlhttp.responseText;	
+    }
+  }
+ xmlhttp.open("POST","edit_timetable_popup.php?"+post_value,true);
+xmlhttp.send(null);
+
+}
+
+
+function editTimetableAjax()
+{
+var popup_subject			=document.getElementById("popup_subject").value;
+var popup_paper				=document.getElementById("popup_paper").value;
+var popup_teacherid			=document.getElementById("popup_teacherid").value;
+var popup_lecture_type		=document.getElementById("popup_lecture_type").value;
+var popup_paper_type		=document.getElementById("popup_paper_type").value;
+var popup_group_id		=document.getElementById("popup_group_id").value;
+var popup_roomno			=document.getElementById("popup_roomno").value;
+var teacherid				=document.getElementById("teacher").value;
+var roomno					=document.getElementById("roomno").value;
+var popup_id				=document.getElementById("popup_id").value;
+var sem						=document.getElementById("semester").value;
+var classid					=document.getElementById("classid").value;
+var class_section			=document.getElementById("edit_class_section").value;
+var day						=document.getElementById("edit_day").value;
+var period					=document.getElementById("edit_period").value;
+
+var post_value="&popup_subject="+popup_subject+"&popup_paper="+popup_paper+"&popup_paper_type="+popup_paper_type+"&popup_lecture_type="+popup_lecture_type+"&teacherid="+teacherid+"&popup_teacherid="+popup_teacherid+"&popup_roomno="+popup_roomno+"&popup_id="+popup_id+"&sem="+sem+"&classid="+classid+"&class_section="+class_section+"&roomno="+roomno+"&day="+day+"&period="+period+"&popup_group_id="+popup_group_id ;	
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("show_edit_time_table").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("POST","edit_timetable_ajax.php?submit=Update"+post_value,true);
+xmlhttp.send(null);
+document.getElementById('edit-form').style.display= 'none'; 
+
+}
+
+
+// FOR DEPARTMENT EDIT TIMETABLE START
+
+function editTimetablePopup1(id)
+{	
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+		
+    document.getElementById("editTimetable").innerHTML=xmlhttp.responseText;	
+    }
+  }
+ xmlhttp.open("POST","edit_timetable_popup.php?id="+id,true);
+xmlhttp.send(null);
+
+}
+
+
+function editTimetableAjax1()
+{
+var popup_paper				=document.getElementById("popup_paper").value;
+/*var teacherid				=document.getElementById("teacher").value;
+var roomno					=document.getElementById("roomno").value;*/
+var popup_id				=document.getElementById("popup_id").value;
+var popup_teacherid			=document.getElementById("popup_teacherid").value;
+//var popup_lecture_type		=document.getElementById("popup_lecture_type").value;
+//var popup_paper_type		=document.getElementById("popup_paper_type").value;
+//var popup_roomno			=document.getElementById("popup_roomno").value;
+var sem						=document.getElementById("semester").value;
+var classid					=document.getElementById("classid").value;
+var class_section			=document.getElementById("class_section").value;
+//var day						=document.getElementById("day").value;
+//var period					=document.getElementById("period").value;
+post_value="&popup_paper="+popup_paper+"&popup_teacherid="+popup_teacherid+"&popup_id="+popup_id+"&sem="+sem+"&classid="+classid+"&class_section="+class_section ;	
+//var post_value="&popup_paper="+popup_paper+"&teacherid="+teacherid+"&popup_teacherid="+popup_teacherid+"&popup_roomno="+popup_roomno+"&popup_id="+popup_id+"&sem="+sem+"&classid="+classid+"&class_section="+class_section+"&roomno="+roomno+"&day="+day+"&period="+period ;	
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("show_edit_time_table").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("POST","edit_timetable_ajax.php?submit=Update"+post_value,true);
+xmlhttp.send(null);
+document.getElementById('edit-form').style.display= 'none'; 
+
+}
+
+// FOR DEPARTMENT EDIT TIMETABLE END
+
+
